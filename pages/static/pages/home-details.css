@@ -1,0 +1,28 @@
+
+
+.container {
+    /* padding : 2rem;  */
+    /* background-color: rgb(232, 235, 234) !important; */
+    margin-top: 3rem;
+}
+
+.row {
+    background-color: rgb(232, 235, 234) !important;
+    padding : 2rem; 
+    border-radius: 0.7rem;
+}
+.container img {
+    width : 450 ;
+    height : 210 ;  
+}
+
+
+.container .first {
+    color: rgb(109, 145, 145);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.container h1 {
+    color: black;
+}

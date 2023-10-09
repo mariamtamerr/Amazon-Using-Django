@@ -1,0 +1,28 @@
+{% load static %}
+
+{% comment %} {% extends "../base.html" %}  {% endcomment %}
+
+{% block content %} 
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+   
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2 amazon" style='font-size: 1.8rem; margin-left: 3rem;'>
+            Amazon
+        </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'contact-us' %}">Contact Us</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'about-us' %}">About us</a>
+          </li>
+   </div>
+</nav>
+
+
+{% endblock content %} 

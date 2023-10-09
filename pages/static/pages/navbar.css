@@ -1,0 +1,35 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.navbar {
+    background-color: #131a22 !important;
+    color: #e3e6e6;
+
+}
+
+
+.navbar li a {
+    color : #e3e6e6 !important; 
+}
+
+.amazon {
+    margin-right: 15rem !important;
+}
+
+
+.nav-link.active {
+    font-size: 1.2rem;
+    margin: 0 2rem; 
+}
+
+.nav-link.active:hover {
+    background-color: #e3e6e6;
+    border-radius: 0.7rem;
+    color: #131a22 !important;
+}

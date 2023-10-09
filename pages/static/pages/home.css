@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center !important;
+}
+
+
+a.view:hover {
+    background-color: #eee !important;
+    color: #198754 !important;
+}
+
+a:hover { 
+    background-color: #eee !important;
+    color: #198754 !important;
+}
