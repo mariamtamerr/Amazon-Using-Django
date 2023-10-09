@@ -11,7 +11,7 @@
     padding : 2rem; 
     border-radius: 0.7rem;
 }
-.container img {
+.container img.details {
     width : 450 ;
     height : 210 ;  
 }

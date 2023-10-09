@@ -15,14 +15,15 @@
 <div class='container'>
     <div class='row'>
 {% comment %} {% for card in "123" %} {% endcomment %}
-{% for product in product_details %}
+{% for product in products %}
 
 <div class="card" style="width: 18rem; margin-right: 1rem; box-shadow: 0 0 0.7rem grey; ">
-    <img src="{% static "pages/images/"|add:product.image %}" class="card-img-top" alt="..."/>
+    <img src="{% static 'pages/images/'|add:'product.image' %}" class="card-img-top home" alt="..."/>
     <div class="card-body">
       <h5 class="card-title">{{product.name}}</h5>
       <p class="card-text">{{product.description}}.</p>
       <a href="{% url 'home_details' product.id %}" class="btn btn-success view">View Details</a>
+      <a href="{% url 'delete' product.id %}" class="btn btn-danger view">Delete</a>
     </div>
   </div>
 

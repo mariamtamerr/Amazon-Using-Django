@@ -18,3 +18,8 @@ a:hover {
     background-color: #eee !important;
     color: #198754 !important;
 }
+
+
+.container img.home {
+    width: 100px !important;
+}

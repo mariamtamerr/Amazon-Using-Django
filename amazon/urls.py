@@ -16,26 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 
 # note : include takes an APP url not a page in an app url
 # so it's page.urls for all , not home.urls w contact.urls, ...
 #ashan all of them are in the same app
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('', include('pages.urls')), 
-#     path('contact-us/', include('pages.urls')),
-#     path('about-us/', include('pages.urls')),
-#     # path('/home-details/', include('pages.urls')),
-# ]
-
-from pages import views  
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'), 
-    path('contact-us/', views.contact_us, name='contact-us'), 
-    path('about-us/', views.about_us, name='about-us'), 
-    # path('/home-details', views.home_details, name='home_details'), 
-    path('home_details/<int:product_id>/', views.home_details, name='home_details'),  # Include this line
+    # path('', include('pages.urls')), 
+    path('', include('pages.urls')), 
+  
+    # path('/home-details/', include('pages.urls')),
 ]
+
+# from pages import views  
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', views.home, name='home'), 
+#     path('contact-us/', views.contact_us, name='contact-us'), 
+#     path('about-us/', views.about_us, name='about-us'), 
+#     # path('/home-details', views.home_details, name='home_details'), 
+#     path('home_details/<int:product_id>/', views.home_details, name='home_details'),  # Include this line
+# ]
