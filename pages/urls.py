@@ -8,5 +8,5 @@ urlpatterns = [
     path('about_us', views.about_us, name='about-us'),
     path('home_details/<int:product_id>', views.home_details, name='home_details'),
     path('delete/<int:id>', views.delete, name='delete'),
-    # path('home_details/<int:id>', views.home_details, name='home_details'),
+ 
 ]

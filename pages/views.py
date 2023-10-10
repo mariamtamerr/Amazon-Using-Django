@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
-from .models import Product
+from .models import Product  # .models = pages.models
 
 # Create your views here.
 
@@ -12,7 +12,15 @@ from .models import Product
 
 
 def home(request):
+# request.GET --> dictionary obj in django that contains all GET parameters sent with the request
+# .get('p') --> get the value of 'q' parameter 
+    query = request.GET.get('q')
     products = Product.objects.all()
+#.filter() --> method provided by Django's QuerySet API to filter results of DB query
+# icontains --> case sensitive contains 
+    if query:
+          products = products.filter(name__icontains=query)
+
     return render(request, 'pages/home.html', {"products": products})
 
 
@@ -48,6 +56,7 @@ def home_details(request, product_id):
         return render(request, 'pages/home-details.html', {'product': product})
     else:
         return HttpResponse("Product not found")
+    
 
 # -----------------------------------------------------------------
 
@@ -55,7 +64,8 @@ def delete(request, id):
      product = Product.objects.get(id=id)
      product.delete()
     #  url = reverse('pages/home-details.html')
-     return HttpResponse("Product deleted")
+    #  return HttpResponse("Product deleted")
+     return redirect('home')
     #  return render(request, 'pages/home-details.html')
 
 
