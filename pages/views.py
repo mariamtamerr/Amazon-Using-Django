@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
 from .models import Product  # .models = pages.models
+from .forms import ProductForm
 
 # Create your views here.
 
@@ -78,3 +79,55 @@ def contact_us(request):
 
 def about_us(request):
     return render(request, 'pages/about-us.html') 
+
+# ---------------------------------------------------------
+
+# -------- forms --------------------------------
+
+# def createViaForm(request):
+#     form = ProductForm()
+#     if request.method == 'POST':
+#         print(request.POST)
+#         form = ProductForm(request.POST, request.FILES)
+#         # product = None 
+#         # if request.POST['product']:
+#         #     product = Product.objects.get(id=request.POST['product'])
+#         if form.is_valid():
+#             product = Product.objects.create(
+#                                 id=request.POST['id'], 
+#                                 name = request.POST['name'], 
+#                                 description = request.POST['description'],
+#                                 price = request.POST['price'],
+#                                 instock = request.POST['instock'] )
+#             image = None
+#             if "image" in request.FILES :
+#                 image = request.FILES['image']
+#             # product = Product.objects.create(id=id, name=name, image=image, price=price, instock=instock, description=description)
+#             url = reverse('tracks.index')  # /tracks/
+#             return redirect(url)
+
+#     return  render( request, 'pages/forms/create.html',
+#                     context={"form": form})
+            
+
+def createViaForm(request):
+   
+    form = ProductForm()
+
+    if request.POST:
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            id=request.POST['id']
+            name = request.POST['name']
+            price = request.POST['price']
+            instock = request.POST['instock'] 
+            description = request.POST['description']
+            image = None
+            if "image" in request.FILES :
+                image = request.FILES['image']
+            product = Product.objects.create(id=id, name=name, image=image, price=price, instock=instock, description=description)
+            url = reverse('home') 
+            return redirect(url)
+
+    return  render( request, 'pages/forms/create.html',
+                    context={"form": form})

@@ -4,7 +4,7 @@
 
 {% block content %} 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style='position:fixed; top:0; width:100%; z-index: 999;'>
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-3" style='position:fixed; top:0; width:100%; z-index: 999;'>
    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -14,13 +14,32 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'categories index home' %}">Categories</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Add A New Product</a>
+          </li>
           
           <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'contact-us' %}">Contact Us</a>
           </li>
+
           <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'about-us' %}">About us</a>
           </li>
+
+        <div class='users-away' style='margin-left:15rem; display:flex; justify-items:center'>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Login</a>
+      </li>
+    </div>
    </div>
 </nav>
 

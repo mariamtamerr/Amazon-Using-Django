@@ -1,4 +1,6 @@
 from django.db import models
+from django.shortcuts import reverse
+from categories.models import Category
 
 # Create your models here.
 
@@ -12,6 +14,24 @@ class Product(models.Model):
     image = models.ImageField(null=True)
     instock = models.BooleanField()
     description = models.TextField()
+    category = models.ForeignKey(Category, null=True, blank=True,
+                              on_delete=models.CASCADE, related_name='products')
+
 
     def __str__(self):
         return self.name
+    
+
+    @classmethod
+    def get_all_products(cls):
+        return  cls.objects.all()
+
+
+    @classmethod
+    def get_home_url(cls):
+        return reverse('home')
+
+
+    def get_image_url(self):
+        # return f"/media/{self.image}"
+        return f"/media/{self.image}"
