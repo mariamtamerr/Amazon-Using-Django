@@ -1,0 +1,93 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+
+{% block content %}
+ 
+  <div class="container">
+
+   
+   
+   
+  
+    <table class="table ">
+      <tr style=""> 
+        <th class="">Category id :</th>  
+        <th class="">Category Name :  </th> 
+        <th class="">Category Description :</th>
+        <th class="">Image</th>
+        <th class="">products of this category :</th>
+      </tr>
+
+     
+ {% for product in  products %}
+
+
+      <tr>
+        <td>{{product.id}} </td>
+        <td>{{ product.name}} </td>
+        <td>{{product.description}} </td>
+        <td>{{product.image}} </td>
+        <td> </td>
+      </tr>
+ {% endfor %}
+{% comment %}       
+      {% for j in category.product %}
+      <p>hiiiiiiiii </p>
+      {% endfor %}
+
+      {% for i in category %}
+        <tr>
+          <td> {{i.id}}</td>
+          <td> {{i.name}}</td>
+          <td> {{i.description}}</td>
+          <td> {{i.products}}
+            <img src="{{i.get_image_url}}" width="100"> 
+          </td>
+          <td>
+            <a href="{% url 'categories details' i.id %}" class="btn text-white" >Show</a>
+          </td>
+        </tr>
+      {% endfor %} {% endcomment %}
+
+
+      {% comment %} {{category.product.all}} {% endcomment %}
+
+{% comment %}     
+      {% for category_product in category.product.all %}
+        <tr>
+          <td>{{ category_product.id }}</td>
+          <td>{{ category_product.name }}</td>
+          <td>{{ category_product.description }}</td>
+          <td>
+            <img src="{{ category_product.get_image_url }}" width="100">
+          </td>
+          <td>
+            <a href="{% url 'categories details' category_product.id %}" class="btn text-white">Show</a>
+          </td>
+        </tr>
+      {% endfor %} {% endcomment %}
+
+      {% comment %} {% for x in filtered  %}
+      
+      {{x.name}}
+
+
+      {% endfor %} {% endcomment %}
+
+      {% comment %} <h1>Category: {{ category.name }}</h1>
+
+      <h2>Products in this category:</h2>
+      <ul>
+          {% for product in products %}
+              <li>{{ product.name }}</li>
+              <!-- You can display other product information here -->
+          {% empty %}
+              <li>No products in this category.</li>
+          {% endfor %} {% endcomment %}
+
+         
+    </table>
+  </div>
+ 
+{% endblock content %}

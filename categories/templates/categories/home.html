@@ -1,0 +1,69 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% comment %} <link rel='stylesheet' href="{% static "pages/home.css" %}"> {% endcomment %}
+
+{% comment %} 
+{% block content %}
+
+<h1> categories </h1>
+<a href="{% url 'categories details' i.id  %}" class="btn btn-dark">details </a>
+<table class="table">
+        <tr> <th> ID</th>  <th> Name</th> <th>Image </th>
+            <th> Show </th> <th> Delete</th>
+        </tr>
+        <td><a href="" class="btn btn-info">  Show </a> </td>
+
+             <td><a href="" class="btn btn-danger">  Delete </a> </td>
+
+    {% for i in category %}
+        <tr>
+            <td>{{i.id }}</td>
+             <td>{{i.name }}</td>
+             <td><img src="{{i.get_image_url}}" width="100" height="100" > </td>
+            <td><a href="" class="btn btn-info">  Show </a> </td>
+
+             <td><a href="" class="btn btn-danger">  Delete </a> </td>
+        </tr>
+
+{% endfor %}
+
+
+
+</div>
+</div>
+
+{% endblock content %} {% endcomment %}
+
+{% comment %} ---------------------------- {% endcomment %}
+
+
+{% block content %}
+<h1>categories</h1>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Show</th>
+        <th>Edit</th>
+    </tr>
+    {% comment %} {% for i in category %} {% endcomment %}
+    {% comment %} {{ i.id }} {% endcomment %}
+    {% comment %} {% endfor %} {% endcomment %}
+    {% comment %} <td><a href="{% url 'categories details' i.id %}" class="btn btn-dark">Show Details</a></td>
+    <td><a href="" class="btn btn-danger">Delete</a></td> {% endcomment %}
+
+    {% for i in category %}
+    {% comment %} {{ i.id }} {% endcomment %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td><img src="{{i.get_image_url}}" width="100" height="100"></td>
+        <td><a href="{% url 'categories details' i.id %}" class="btn btn-success">Show Items</a></td>
+    </tr>
+    {% comment %} {{ i.id }} {% endcomment %}
+    {% endfor %}
+</table>
+</div>
+{% endblock content %}
