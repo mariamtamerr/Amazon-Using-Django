@@ -18,17 +18,22 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 
+from django.conf import settings
+from django.conf.urls.static import static
+from users import views as user_views
+
 # note : include takes an APP url not a page in an app url
 # so it's page.urls for all , not home.urls w contact.urls, ...
 #ashan all of them are in the same app
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('pages.urls')), 
     path('', include('pages.urls')), 
+    path('categories/', include('categories.urls')), 
+    path('register/', user_views.register, name='register'),
+    
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   
-    # path('/home-details/', include('pages.urls')),
-]
 
 # from pages import views  
 
@@ -40,3 +45,4 @@ urlpatterns = [
 #     # path('/home-details', views.home_details, name='home_details'), 
 #     path('home_details/<int:product_id>/', views.home_details, name='home_details'),  # Include this line
 # ]
+

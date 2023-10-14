@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
+    'categories.apps.CategoriesConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +68,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'pages/about-us.html'),
             os.path.join(BASE_DIR, 'pages/parts/navbar.html'),
             os.path.join(BASE_DIR, 'pages/parts/footer.html'),
+            os.path.join(BASE_DIR, 'users/register.html'),
               ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -146,3 +151,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
