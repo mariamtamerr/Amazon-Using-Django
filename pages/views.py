@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
 from .models import Product  # .models = pages.models
 from .forms import ProductForm
-from django.views.generic import ListView
 
 # Create your views here.
 
@@ -49,14 +48,6 @@ def home(request):
 #         return render(request, 'pages/home-details.html', {'products': product[0]})
 #     else:
 #         return HttpResponse("Product not found")
-
-
-class ProductListView(ListView):
-    model = Product
-    template_name = 'pages/home.html'
-    context_object_name = 'products'
-    
-
 
 
 

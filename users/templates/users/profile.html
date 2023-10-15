@@ -2,10 +2,12 @@
 {% extends "pages/base.html" %}
 
 {% comment %} {% load static %} {% endcomment %}
-{% load crispy_forms_tags %}
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
 
 {% block content %}
 
+
+<div class='container'>
     <h1> hiiii </h1>
     <h1 style='margin-bottom: 10rem;
             color: black;
@@ -14,7 +16,14 @@
             top: 10rem;
             left: 15rem;'>  {{user.username}}'s profile </h1>
 
+{% comment %} <h3> {{object.firstname}} </h3> {% endcomment %}
+{% comment %} <h3> {{user_list.firstname}} </h3>
+<h3> {{user_detail.lastname}} </h3>
+<h3> {{user_detail.email}} </h3>
+<h3> {{user_detail.email}} </h3> {% endcomment %}
 
+
+</div>
 
 {% endblock content %}
 

@@ -1,0 +1,54 @@
+
+
+{% extends "pages/base.html" %}
+{% load static %}
+<link rel='stylesheet' href="{% static "pages/home-details.css" %}">
+
+
+{% block content  %}
+
+
+<div class="container">
+
+    <h1>Product Details</h1>
+
+<div class='row'>
+    <div class='col-6 first'>
+    <p> {{ object.name }}</p>
+    <p>{{ pobject.price }}$ </p>
+    <p>{% if object.instock %} In Stock {% else %} Out of Stock {% endif %}</p>
+    <p>{{ object.description }}</p>
+    {% comment %} ------------------ {% endcomment %}
+    </div>
+
+    <div class='col-6'>
+        <div class="card" style="width: 18rem;">
+            <img src="{% static "pages/images/"|add:product.image %}" class="card-img-top details" alt="..."/>
+            <a href="{% url 'home' %}" class="btn btn-success view">Back To Products</a>
+        </div>
+    </div>
+
+</div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} ----------- DEBUG --------- {% endcomment %}
+
+
+{% comment %} <!-- Add this to your template for debugging -->
+Debug:
+<pre>
+{{ product|pprint }}
+</pre> {% endcomment %}

@@ -40,8 +40,8 @@
 {% comment %}   -if user is authenticated ( aka loggin in ) , show him the log out nav link.
                 -If not, then show him the Login / Register nav links          {% endcomment %}
           
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Profile</a>
+            <li class="nav-item" >
+            <a class="nav-link active" aria-current="page" href="{% url 'profile' %}" style='background-color:#ffff0040; border-radius: 0.5rem '>{{user.username}}</a>
         </li>
 
        
@@ -59,7 +59,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Login</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
       </li>
            {% endif %}
 

@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'categories.apps.CategoriesConfig',
-    'users.apps.UsersConfig',
+    # 'users.apps.UsersConfig',
     'crispy_forms',
     'crispy_bootstrap5',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -61,14 +62,16 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [ 
-            os.path.join(BASE_DIR, 'pages/base.html'),
-            os.path.join(BASE_DIR, 'pages/home.html'),
-            os.path.join(BASE_DIR, 'pages/home-details.html'),
-            os.path.join(BASE_DIR, 'pages/contact-us.html'),
-            os.path.join(BASE_DIR, 'pages/about-us.html'),
-            os.path.join(BASE_DIR, 'pages/parts/navbar.html'),
-            os.path.join(BASE_DIR, 'pages/parts/footer.html'),
-            os.path.join(BASE_DIR, 'users/register.html'),
+            os.path.join(BASE_DIR, 'templates'),
+            # os.path.join(BASE_DIR, 'pages/base.html'),
+            # os.path.join(BASE_DIR, 'pages/home.html'),
+            # os.path.join(BASE_DIR, 'pages/home-details.html'),
+            # os.path.join(BASE_DIR, 'pages/contact-us.html'),
+            # os.path.join(BASE_DIR, 'pages/about-us.html'),
+            # os.path.join(BASE_DIR, 'pages/parts/navbar.html'),
+            # os.path.join(BASE_DIR, 'pages/parts/footer.html'),
+            # os.path.join(BASE_DIR, 'users/register.html'),
+            # os.path.join(BASE_DIR, 'user.html'),
               ],
         'APP_DIRS': True,
         'OPTIONS': {

@@ -1,0 +1,23 @@
+
+
+
+{% extends 'pages/base.html' %}
+
+{% block content %}
+
+<div class='container'>
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <h1>Delete Profile</h1> <br> <br>
+    <h2>Are you sure you want to delete your profile?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type='submit' class='btn btn-danger'>Delete</button>
+       
+     
+    </form>
+    <a type='submit' class='btn btn-secondary' href='accounts_profile'>No</a>
+</div>
+{% endblock %}

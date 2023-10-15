@@ -35,8 +35,9 @@
     <div class="card-body">
       <h5 class="card-title">{{product.name}}</h5>
       <p class="card-text">{{product.description}}.</p>
+      {% comment %} <a href="{% url 'home_details' product.id %}" class="btn btn-success view">View Details</a> {% endcomment %}
       <a href="{% url 'home_details' product.id %}" class="btn btn-success view">View Details</a>
-      <a href="{% url 'delete' product.id %}" class="btn btn-danger view">Delete</a>
+      <a href="{% url 'delete' product.pk %}" class="btn btn-danger view">Delete</a>
     </div>
   </div>
 
