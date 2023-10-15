@@ -1,7 +1,7 @@
 
 {% extends "pages/base.html" %} 
 {% load static %}
-
+{% load crispy_forms_tags %}
 
 {% block title %} Create A New Product  {% endblock %}
 
@@ -10,7 +10,7 @@
   <div class="container " style="margin-top: 100px" >
     <form method="post"  enctype="multipart/form-data">
       {% csrf_token %}
-      {{form}}
+      {{form|crispy}}
       <button type="submit" class='btn btn-success' >Submit</button>
     </form>
   </div>

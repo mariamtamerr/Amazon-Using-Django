@@ -1,0 +1,15 @@
+
+
+#  crispy forms bootstrap5 
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# for login 
+# bakteb my home page url name here so when I login,
+#  the browser directs me into my home page
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'

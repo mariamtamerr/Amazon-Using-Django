@@ -31,7 +31,29 @@
               <a class="nav-link active" aria-current="page" href="{% url 'about-us' %}">About us</a>
           </li>
 
-        <div class='users-away' style='margin-left:15rem; display:flex; justify-items:center'>
+
+          <div class='users-away' style='margin-left:18rem; display:flex; justify-items:center'>
+          <div class='navbar-nav'>
+
+            {% if user.is_authenticated  %}
+            
+{% comment %}   -if user is authenticated ( aka loggin in ) , show him the log out nav link.
+                -If not, then show him the Login / Register nav links          {% endcomment %}
+          
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Profile</a>
+        </li>
+
+       
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+      </li>
+
+                 {% else %}
+
+    
+          
+        
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
         </li>
@@ -39,6 +61,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Login</a>
       </li>
+           {% endif %}
+
+    </div>
+
+
     </div>
    </div>
 </nav>
