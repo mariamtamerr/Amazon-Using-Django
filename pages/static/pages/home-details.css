@@ -7,7 +7,8 @@
 }
 
 .row {
-    background-color: rgb(232, 235, 234) !important;
+    /* background-color: rgb(232, 235, 234) !important; */
+    /* background-color: rgb(34, 161, 119) !important; */
     padding : 2rem; 
     border-radius: 0.7rem;
 }
@@ -25,4 +26,9 @@
 
 .container h1 {
     color: black;
+}
+
+
+a.btn.view {
+    background-color: #350000 !important;
 }

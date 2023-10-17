@@ -3,42 +3,62 @@
 
 {% extends "pages/base.html" %}
 
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 {% comment %} {% load crispy_forms_tags %} {% endcomment %}
 
 {% block content %}
 
 
-{% comment %} <div class='container'> {% endcomment %}
-   
+    <br>
+    <br>
+    <br>
     <h1 style='margin-top: 5rem'>  {{user.username}}'s profile </h1>
 
-{% comment %} </div> {% endcomment %}
-        <div class='container' style='margin-bottom: 15rem; '>
+
+        <div class='container' style='margin-bottom: 15rem; box-shadow: 0 0 3px;  '>
+
+        <div class='row profile' style='background-color: #ffffff00 !important;'>
+
+            <div class='col-7 info'>
             <strong>Username:</strong> {{ user_profile.username }}
-   
+   <br>
+   <br>
     <div class="profile-field">
         <strong>First Name:</strong> {{ user_profile.first_name }}
     </div>
-    <div class="profile-field">
+<br>    <div class="profile-field">
         <strong>Last Name:</strong> {{ user_profile.last_name }}
     </div>
-    <div class="profile-field">
+<br> <div class="profile-field">
         <strong>Email:</strong> {{ user_profile.email }}
     </div>
+<br>
 
-    <div class="profile-actions">
-        <a href="{% url 'profile_update' %}">Update Profile</a>
-        <a href="{% url 'profile_delete' %}">Delete Profile</a>
+</div>
+
+<div class='col-5 pic'>
+
+    {% comment %} <img src='{% static 'account/images/profile.png' %}' /> {% endcomment %}
+    {% comment %} <img src="{% static 'accounts/images/profile.png' %}" /> {% endcomment %}
+    <img src='{% static "accounts/images/profile.png" %}' />
+    {% comment %} <img src='{% static "accounts/images/profile2.png" %}' /> {% endcomment %}
+
+</div>
+
+</div>
+
+{% comment %} ---------- buttons ----------  {% endcomment %}
+<div class='d-flex justify-content-evenly'>
+
+    <a class='btn btn-secondary' href="{% url 'profile_update' %}" style='width:50%;'>Update Profile</a>
+    <a class='btn btn-danger'  href="{% url 'profile_delete' %}"  style='width:50%;' >Delete Profile</a>
+
+</div>
+<br>
+
     </div>
 </div>
  </div>
-{% comment %} <h3> {{object.firstname}} </h3> {% endcomment %}
-{% comment %} <h3> {{user_list.firstname}} </h3>
-<h3> {{user_detail.lastname}} </h3>
-<h3> {{user_detail.email}} </h3>
-<h3> {{user_detail.email}} </h3> {% endcomment %}
-
 
 </div>
 

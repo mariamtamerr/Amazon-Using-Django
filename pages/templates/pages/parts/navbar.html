@@ -11,7 +11,9 @@
         <li class="nav-item mx-2 amazon" style='font-size: 1.8rem; margin-left: 3rem;'>
             {% comment %} ---------- {% endcomment %}
           
-              <img src='{% static 'pages/images/download.png' %}' style='height: 50px'/>
+              <img src='{% static 'pages/images/download.jpeg' %}' style='height: 40px; border-radius:0.7rem; cursor:pointer'/>
+              {% comment %} <img src='{% static 'pages/images/images.png' %}' style='height: 50px'/> {% endcomment %}
+              {% comment %} <img src='{% static 'pages/images/images2.png' %}' /> {% endcomment %}
           
             {% comment %} ------------- {% endcomment %}
         </li>
@@ -24,7 +26,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Add A New Product</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Create Product</a>
           </li>
           
           <li class="nav-item">

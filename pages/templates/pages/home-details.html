@@ -1,52 +1,128 @@
 {% extends "pages/base.html" %}
 {% load static %}
+<head>
 <link rel='stylesheet' href="{% static "pages/home-details.css" %}">
 
+<style>
 
+    a.btn.view {
+        background-color: #350000 !important; 
+    }
+</style>
+</head>
 {% block content  %}
 
-
+<br/> 
+<br/> 
+<br/> 
+<br/> 
+<br/> 
 <div class="container">
 
     <h1>Product Details</h1>
 
-<div class='row'>
-    <div class='col-6 first'>
-    <p> {{ product.name }}</p>
-    <p>{{ product.price }}$ </p>
-    <p>{% if product.instock %} In Stock {% else %} Out of Stock {% endif %}</p>
-    <p>{{ product.description }}</p>
-    {% comment %} ------------------ {% endcomment %}
-    </div>
+<div class='row details' style='box-shadow: 0 0 3px;' >
 
-    <div class='col-6'>
-        <div class="card" style="width: 18rem;">
-            <img src="{% static "pages/images/"|add:product.image %}" class="card-img-top details" alt="..."/>
-            <a href="{% url 'home' %}" class="btn btn-success view">Back To Products</a>
+    <div class='col-7 '>
+       
+ 
+<p> <b>Product Name :  </b> {{product.name}}     </p>
+<p> <b>Product Price :  </b> {{product.price}}     </p>
+<p> <b>Product Description :  </b> {{product.description}}     </p>
+<p> <b>Product Instock :  </b> {% if product.instock %} In Stock {% else %} Out of Stock {% endif %}   </p>
+<p> <b>Product Color :  </b> Black     </p>
+<hr style='color:black; font-weight:bold; font-size: 2rem'/>
+<hr/>
+<div id="averageCustomerReviews" data-asin="B09MLFZY7K" data-ref="dpx_acr_pop_" >
+    <span class="a-declarative" data-action="acrStarsLink-click-metrics" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-acrStarsLink-click-metrics" data-acrStarsLink-click-metrics="{}">        <span id="acrPopover" class="reviewCountTextLinkedHistogram noUnderline" title="4 out of 5 stars">
+<span class="a-declarative" data-action="a-popover" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-a-popover" data-a-popover="{&quot;max-width&quot;:&quot;700&quot;,&quot;closeButton&quot;:&quot;false&quot;,&quot;name&quot;:&quot;star_ratings_popover&quot;,&quot;position&quot;:&quot;triggerBottom&quot;,&quot;url&quot;:&quot;/gp/customer-reviews/widgets/average-customer-review/popover/ref=dpx_acr_pop_?contextId=dpx&amp;asin=B09MLFZY7K&quot;}"> <a href="javascript:void(0)" role="button" class="a-popover-trigger a-declarative">  <span class="a-size-base a-color-base"> 4.6 </span>   <i class="a-icon a-icon-star a-star-4-5 cm-cr-review-stars-spacing-big"><span class="a-icon-alt">4.6 out of 5 stars</span></i>   <i class="a-icon a-icon-popover"></i></a> </span> <span class="a-letter-space"></span> </span>
+</span> <span class="a-letter-space"></span>             <span class="a-declarative" data-action="acrLink-click-metrics" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-acrLink-click-metrics" data-acrLink-click-metrics="{}"> <a id="acrCustomerReviewLink" class="a-link-normal" href="#customerReviews"> <span id="acrCustomerReviewText" class="a-size-base">61 ratings</span> </a> </span> 
+
+<span class="a-size-base a-color-base">  </span>
+<i class="a-icon a-icon-star a-star-4-5 cm-cr-review-stars-spacing-big"><span class="a-icon-alt"></span></i>
+<br> <br>
+<i class="fas fa-star" style='color:#dfc224'></i> 
+<i class="fas fa-star" style='color:#dfc224'></i> 
+<i class="fas fa-star" style='color:#dfc224'></i> 
+<i class="fas fa-star" style='color:#dfc224'></i> 
+<i class="far fa-star" style='color:#dfc224'></i> 
+<br/> <br> 
+
+{% comment %} MINI ICONS {% endcomment %}
+<div class="mini icons d-flex justify-content-evenly"> 
+<div>
+<img src="https://m.media-amazon.com/images/G/42/A2I-Convert/mobile/IconFarm/icon-ePay._CB589360495_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Card <br> Payment Only" data-a-image-source="https://m.media-amazon.com/images/G/42/A2I-Convert/mobile/IconFarm/icon-ePay._CB589360495_.png">
+<br> <a href=''> Card  Payment Only </a>
+</div>
+
+<div>
+<img src="https://m.media-amazon.com/images/G/42/A2I-Convert/mobile/IconFarm/icon-returns._CB403797073_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Returns Policy" data-a-image-source="https://m.media-amazon.com/images/G/42/A2I-Convert/mobile/IconFarm/icon-returns._CB403797073_.png">
+<br> <a href=''> Returns  Policy </a>
+</div>
+
+<div>
+<img src="https://m.media-amazon.com/images/G/42/A2I-Convert/mobile/IconFarm/icon-secure-transaction._CB414468582_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Secure transaction" data-a-image-source="https://m.media-amazon.com/images/G/42/A2I-Convert/mobile/IconFarm/icon-secure-transaction._CB414468582_.png">
+<br> <a href=''> Secure Transaction </a>
+</div>
+</div>
+
+{% comment %} about this item {% endcomment %}
+
+<div id="feature-bullets" class="a-section a-spacing-medium a-spacing-top-small">                             <hr>
+    <h1 class="a-size-base-plus a-text-bold"> About this item </h1>            
+        <ul class="a-unordered-list a-vertical a-spacing-mini"> 
+             <li class="a-spacing-mini"><span class="a-list-item"> 
+                【DURABLE AND PRACTICAL】Our Ottoman tray is made of 9mm thick medium density fiberboard, outer wood grain veneer.
+                 It's splinter free and won't snag your ottoman or other furniture surface. All materials are environmentally friendly and safe for direct 
+                 contact with food.  </span></li>  <li class="a-spacing-mini"><span class="a-list-item"> 【LARGE SERVING TRAY】Outer dimension: 15.7 x 11.8 x 2 inch
+                 / 40 x 30 x 5 cm, this is not a small wooden tray, Unlike many other coffee trays which arrive much smaller than expected, 
+                 we can promise this is a large wooden tray!  </span></li>  
+                 <li class="a-spacing-mini"><span class="a-list-item"> 
+                    【SPILL PROFF】If a drink spills, it won't soak your ottoman since the handle is cut fairly high on the side as well as the corners are sealed 
+                    to hold water without leaking.  </span></li>  
+                    <li class="a-spacing-mini"><span class="a-list-item"> 
+                        【RUSTIC YET MODERN】Richer grain veneer than solid wood, with the classic pallet shape, the maximum suitable for all decoration styles 
+                        of home or commercial premises. You can keep it in your living room, nursery, kitchen, bedroom, bathroom, or office.  </span></li>  
+                        <li class="a-spacing-mini"><span class="a-list-item"> 【MULTIPURPOSE】Serve food and drinks, breakfast in bed, store and organize all
+                             of your daily essentials, whether you're looking for decorative trays for coffee table, ottoman, vanity counter, our serving tra
+                             y makes a wonderful gift for any occasion!  </span>
+                        </li> 
+         </ul> 
+</div>
+
+    </div>
+</div>
+
+
+{% comment %} IMAGES ON THE SIDE WITH THE BUTTONS  {% endcomment %}
+
+    <div class='col-5'>
+        <div class="card" style="background-color: #ffffff00; border: 1px solid #ffffff00;">
+            {% comment %} <img src="{% static "pages/images/"|add:product.image %}" class="card-img-top details" alt="..."/> {% endcomment %}
+            <img src="{{product.get_image_url}}" class="card-img-top details" alt="..."/ style='height:450px; margin-bottom: 5rem'> 
+        <div class='mini images' style='display:flex; gap:2rem'>
+            <img src="{{product.get_image_url}}" class="card-img-top details" alt="..."/ style='height:150px; width:130px'>
+            <img src="{{product.get_image_url}}" class="card-img-top details" alt="..."/ style='height:150px; width:130px;'>       
+            <img src="{{product.get_image_url}}" class="card-img-top details" alt="..."/ style='height:150px; width:130px;'>       
+        </div> 
+            <br/>
+            <a href="{% url 'home' %}" class="btn  view" style:'position: absolute; background-color: #350000;
+            top: 213px;
+            left: 63px;
+            width: 300px;
+            height: 40px;'>
+            Back To Products</a>
+
+    
+            <a href="{% url 'edit' product.pk %}" class="btn btn-secondary view" style='background-color: #350000; position:absolute'>Edit</a>
+
         </div>
     </div>
 
+
 </div>
+
 </div>
 
 {% endblock content %}
 
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} ----------- DEBUG --------- {% endcomment %}
-
-
-{% comment %} <!-- Add this to your template for debugging -->
-Debug:
-<pre>
-{{ product|pprint }}
-</pre> {% endcomment %}
