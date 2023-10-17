@@ -11,6 +11,7 @@ urlpatterns = [
     # path('product-detail/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
     # path('product-detail/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
     path('delete/<int:id>', views.delete, name='delete'),
+    path('edit/<int:id>', views.edit, name='edit'),
     path('forms/create', views.createViaForm, name='create'),
     path('api/', include('pages.api.urls')), 
  

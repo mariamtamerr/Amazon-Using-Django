@@ -5,7 +5,7 @@ from django.contrib.auth.models import  User
 from  accounts.forms import UserRegisterForm
 from django.urls import reverse_lazy
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -40,7 +40,7 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     def get_object(self, queryset=None): #Returns the single object that this view will display.
         return self.request.user         #return the currently logged-in user   
 
-class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
     template_name = 'accounts/profile_update.html'
     fields = ['first_name', 'last_name', 'email']
@@ -49,6 +49,9 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+    
+    def test_func(self):
+        return self.request.user == self.get_object()
 
 class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = User
@@ -57,6 +60,10 @@ class ProfileDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def test_func(self):
+        return self.request.user == self.get_object()
+
 
 
 class CreateCustomUser(CreateView):

@@ -6,9 +6,20 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    firstname = forms.CharField(max_length=30)
-    lastname = forms.CharField(max_length=30)
 
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+
+
+
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if self.instance.username == username:
+            return username  
+        
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError("Username Already Exists.")
+        
+        return username

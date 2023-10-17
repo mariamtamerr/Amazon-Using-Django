@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
 from .models import Product  # .models = pages.models
 from .forms import ProductForm
+import os
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -25,32 +28,6 @@ def home(request):
     return render(request, 'pages/home.html', {"products": products})
 
 
-
-# def home_details(request, product_id):
-#     product = next((p for p in product_details if p['id'] == product_id), None)
-
-#     if product:
-#         return render(request, 'pages/home-details.html', {'product': product})
-#     else:
-#         return HttpResponse("Product not found")
-
-# --------------------------------------------------------------
-
-# def home_details(request, product_id):
-#     product = Product.objects.get(id=product_id)
-#     # product = filter(lambda x: x["id"] == product_id, product)
-
-#     product = list(product)
-#     print(product_id, product)
-
-#     if product:
-#         print(product[0])
-#         return render(request, 'pages/home-details.html', {'products': product[0]})
-#     else:
-#         return HttpResponse("Product not found")
-
-
-
 def home_details(request, product_id):
     product = Product.objects.get(id=product_id)
 
@@ -60,16 +37,70 @@ def home_details(request, product_id):
         return HttpResponse("Product not found")
     
 
+# --------- edit --------------
+
+@login_required
+def edit(request, id):
+    product = get_object_or_404(Product, id=id)
+    
+#  check if the user is the product owner 3shan y-delete/edit wlla mynf3sh
+    if product.owner != request.user:
+        return HttpResponse("You are not allowed to edit this product.")
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product.id = form.cleaned_data['id']
+            product.name = form.cleaned_data['name']
+            product.price = form.cleaned_data['price']
+            product.description = form.cleaned_data['description']
+            product.instock = form.cleaned_data['instock']
+            product.category = form.cleaned_data['category']
+
+            if 'image' in request.FILES:
+                product.image = form.cleaned_data['image']
+            
+
+            product.save()
+            return redirect('home')
+    else:
+        form = ProductForm({
+            'name': product.name,
+            'price': product.price,
+            'description': product.description,
+            'instock': product.instock,
+            'category': product.category,
+            }
+        )
+
+    context = {
+        'form': form
+    }
+    return render(request, 'pages/edit.html', context)
+
+
+
+
 # -----------------------------------------------------------------
 
+@login_required
 def delete(request, id):
      product = Product.objects.get(id=id)
-     product.delete()
-    #  url = reverse('pages/home-details.html')
-    #  return HttpResponse("Product deleted")
-     return redirect('home')
-    #  return render(request, 'pages/home-details.html')
+     if product.owner != request.user:
+         return HttpResponse("</div class='container'><h1>You're not allowed to delete this product</h1> </div>")
+     if product:
+        product_instance = product[0]
+        image_path = product_instance.image.path
 
+        if os.path.exists(image_path):
+            os.remove(image_path)
+        
+        product_instance.delete()
+        print(request.user,'deleting .. ')
+        return redirect('home')
+     else:
+        return HttpResponse("Product not found")    
+    
 
 
 def contact_us(request):
@@ -84,51 +115,62 @@ def about_us(request):
 # ---------------------------------------------------------
 
 # -------- forms --------------------------------
+         
+        #  this is the add new product functionnnnnnn 
 
+
+# @login_required
 # def createViaForm(request):
+   
 #     form = ProductForm()
-#     if request.method == 'POST':
-#         print(request.POST)
+
+#     if request.POST:
 #         form = ProductForm(request.POST, request.FILES)
-#         # product = None 
-#         # if request.POST['product']:
-#         #     product = Product.objects.get(id=request.POST['product'])
 #         if form.is_valid():
-#             product = Product.objects.create(
-#                                 id=request.POST['id'], 
-#                                 name = request.POST['name'], 
-#                                 description = request.POST['description'],
-#                                 price = request.POST['price'],
-#                                 instock = request.POST['instock'] )
+#             id=request.POST['id']
+#             name = request.POST['name']
+#             price = request.POST['price']
+#             instock = request.POST['instock'] 
+#             description = request.POST['description']
 #             image = None
 #             if "image" in request.FILES :
 #                 image = request.FILES['image']
-#             # product = Product.objects.create(id=id, name=name, image=image, price=price, instock=instock, description=description)
-#             url = reverse('tracks.index')  # /tracks/
+#             product = Product.objects.create(id=id, name=name, image=image, price=price, instock=instock, description=description)
+#             url = reverse('home') 
 #             return redirect(url)
 
 #     return  render( request, 'pages/forms/create.html',
 #                     context={"form": form})
-            
 
+
+
+
+@login_required
 def createViaForm(request):
    
-    form = ProductForm()
-
+ 
     if request.POST:
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            id=request.POST['id']
-            name = request.POST['name']
-            price = request.POST['price']
-            instock = request.POST['instock'] 
-            description = request.POST['description']
-            image = None
-            if "image" in request.FILES :
-                image = request.FILES['image']
-            product = Product.objects.create(id=id, name=name, image=image, price=price, instock=instock, description=description)
-            url = reverse('home') 
-            return redirect(url)
+            if Product.objects.filter(name=form.cleaned_data['name']).exists():
+                form.add_error('name', 'A Product with this name already exists.')
+            else:
+                product = Product(
+                    id=form.cleaned_data['id'],
+                    name=form.cleaned_data['name'],
+                    image=form.cleaned_data['image'],
+                    price=form.cleaned_data['price'],
+                    description=form.cleaned_data['description'],
+                    instock=form.cleaned_data['instock'],
+                    category=form.cleaned_data['category'],
+                    owner=request.user
+                )
+                product.save()
+                return redirect('home')
+    else:
+           form = ProductForm()
+
 
     return  render( request, 'pages/forms/create.html',
                     context={"form": form})
+
