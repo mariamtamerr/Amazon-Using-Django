@@ -20,6 +20,8 @@ from django.shortcuts import redirect
 
 from django.conf import settings
 from django.conf.urls.static import static
+
+
 # from users import views as user_views
 # from django.contrib.auth import views as auth_views
 
@@ -36,6 +38,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('pages.urls')), 
+    # path('api/', include('pages.api.urls')), 
     # path('users/', user_views.profile, name='profile'),
     # path('users/', ProfileDetailView.as_view(), name='profile_detail'),
 
@@ -47,6 +50,8 @@ urlpatterns = [
 
     # path('users/', include('users.urls')), 
     path('accounts/', include('accounts.urls')), 
+  
+    path('api-auth/', include('rest_framework.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   
 

@@ -1,4 +1,4 @@
-from django.urls import path 
+from django.urls import path, include
 from . import views
 
 
@@ -12,5 +12,6 @@ urlpatterns = [
     # path('product-detail/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
     path('delete/<int:id>', views.delete, name='delete'),
     path('forms/create', views.createViaForm, name='create'),
+    path('api/', include('pages.api.urls')), 
  
 ]
