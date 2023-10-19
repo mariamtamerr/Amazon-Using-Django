@@ -9,12 +9,14 @@
 <div class="container" style='margin-top: 6.5rem'>
     <h1 style"text-align:center;">Welcome to the Home Page</h1>
 
-    <form method="POST" action="{% url 'home' %}">
+    <form method="GET" action="{% url 'home' %}">
+        {% csrf_token %}
+        
           <div class="input-group mb-3">
 {% comment %} name='q' so we send the search query as a parameter to GET request {% endcomment %}
               <input type="text" class="form-control" name="q" placeholder="Search for products by name">
-              <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit">Search</button>
+              <div class="input-group-append"> 
+                  <button class="btn btn-outline-secondary" type="submit" >Search</button>
               </div>
           </div>
   </form>
@@ -37,7 +39,7 @@ width: 290px; ">
       <h5 class="card-title">{{product.name}}</h5>
       <p class="card-text">{{product.description}}.</p>
       {% comment %} <a href="{% url 'home_details' product.id %}" class="btn btn-success view">View Details</a> {% endcomment %}
-      <a href="{% url 'home_details' product.id %}" class="btn btn-success view" style='background-color: #2e68dd8f'>View Details</a>
+      <a href="{% url 'home_details' product.id %}" class="btn btn-success view" style='background-color: #2e68dd8f !important'>View Details</a>
       <a href="{% url 'delete' product.pk %}" class="btn btn-danger view">Delete</a>
          </div>
   </div>

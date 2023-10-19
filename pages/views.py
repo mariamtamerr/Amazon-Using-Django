@@ -19,13 +19,17 @@ def home(request):
 # request.GET --> dictionary obj in django that contains all GET parameters sent with the request
 # .get('p') --> get the value of 'q' parameter 
     query = request.GET.get('q')
+    print("Query:", query)
     products = Product.objects.all()
+    print("All products:", products)
 #.filter() --> method provided by Django's QuerySet API to filter results of DB query
 # icontains --> case sensitive contains 
     if query:
           products = products.filter(name__icontains=query)
+          print("Filtered products:", products)
 
-    return render(request, 'pages/home.html', {"products": products})
+    # return render(request, 'pages/home.html', {"products": products})
+    return render(request, 'pages/home.html', {"products": products, 'query':query})
 
 
 def home_details(request, product_id):
